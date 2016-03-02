@@ -1,11 +1,11 @@
 = cf-scale-boot
 
-Demonstrate application instance scaling on Cloud Foundry with this simple (one Groovy file, one HTML file) Spring Boot CLI application!
+Demonstrate application instance scaling on Cloud Foundry with this simple Spring Boot CLI application!
 
 == Running on Cloud Foundry
 
 ----
-$ cf push
+$ mvn package && cf push
 ----
 
 == SCALE!

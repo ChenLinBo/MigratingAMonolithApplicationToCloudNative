@@ -1,4 +1,4 @@
-package io.pivotal.spring.labs02c;
+package io.pivotal.cfscale;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,10 @@ public class Application {
     Cloud cloud;
 
     @RequestMapping("/")
-    String index(Model model, HttpServletRequest request) {
+    String index(Model model) {
 
         model.addAttribute("instance", cloud.getApplicationInstanceInfo().getInstanceId());
         model.addAttribute("props", cloud.getApplicationInstanceInfo().getProperties());
-        model.addAttribute("ipAddress", request.getLocalAddr());
         model.addAttribute("requestsServed", counter.incrementAndGet());
 
         return "index";

@@ -23,31 +23,23 @@
     <table class="table table-striped table-hover">
         <tr>
             <td><strong>App Name</strong></td>
-            <td th:text="${props.application_name}">42</td>
+            <td th:text="${props.application_name}"></td>
         </tr>
         <tr class="info">
             <td><strong>Instance Index</strong></td>
-            <td th:text="${props.instance_index}">42</td>
+            <td th:text="${props.instance_index}"></td>
         </tr>
         <tr>
             <td><strong>Memory Allocated</strong></td>
-            <td th:text="${props.limits.mem}">42</td>
+            <td th:text="${props.limits.mem}"></td>
         </tr>
         <tr>
             <td><strong>Disk Allocated</strong></td>
-            <td th:text="${props.limits.disk}">42</td>
-        </tr>
-        <tr>
-            <td><strong>Warden Container IP</strong></td>
-            <td th:text="${ipAddress}">42</td>
-        </tr>
-        <tr>
-            <td><strong>Warden Container Port</strong></td>
-            <td th:text="${props.port}">42</td>
+            <td th:text="${props.limits.disk}"></td>
         </tr>
         <tr class="info">
             <td><strong>Requests Serviced</strong></td>
-            <td th:text="${requestsServed}">42</td>
+            <td th:text="${requestsServed}"></td>
         </tr>
     </table>
 

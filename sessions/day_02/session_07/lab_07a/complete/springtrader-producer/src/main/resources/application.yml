@@ -1,0 +1,2 @@
+server.port: 9009
+eureka.instance.metadata-map.instanceId: p${server.port}

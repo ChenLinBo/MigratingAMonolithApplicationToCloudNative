@@ -114,12 +114,12 @@ Also, watch the producers and observe that Ribbon is performing round robin load
 
 In this section we will swap the default ``round robin'' load balancing rule for a ``weighted response time'' load balancing rule.
 
-. In the package `io.springtrader.consumer`, create the class `ProducerConfiguration`, and into that class paste the following code:
+. In the package `io.springtrader.consumer`, create the class `RibbonConfiguration`, and into that class paste the following code:
 +
 [source,java]
 ----
 @Configuration
-public class ProducerConfiguration {
+public class RibbonConfiguration {
 
     @Bean
     public IClientConfig ribbonClientConfig() {
@@ -143,7 +143,7 @@ public class ProducerConfiguration {
 ----
 @SpringBootApplication
 @EnableDiscoveryClient
-@RibbonClient(name = "producer", configuration = ProducerConfiguration.class)  // <--- ADD THIS!
+@RibbonClient(name = "producer", configuration = RibbonConfiguration.class)  // <--- ADD THIS!
 public class SpringtraderConsumerApplication {
 
     public static void main(String[] args) {

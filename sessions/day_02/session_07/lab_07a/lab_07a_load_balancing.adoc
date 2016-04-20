@@ -1,6 +1,7 @@
 :compat-mode:
 = Lab 07a - Client-Side Load Balancing with Ribbon
 
+Estimated time to complete: 30 minutes
 [abstract]
 --
 Let's continue learning the components found in Spring Cloud to implement patterns for distributed systems.
@@ -64,13 +65,7 @@ image::../../../Common/images/ribbon_1.png[]
 
 == Using the `LoadBalancerClient`
 
-. Change to the lab directory:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07a/initial/springtrader-consumer
-----
-+
-and import the project (via `pom.xml`) into your IDE of choice.
+. Inside your IDE, open the project `springtrader-consumer`
 
 . Where is Ribbon?
 +
@@ -85,18 +80,10 @@ You might be interested to know how your Ribbon Client has been included inside 
 </dependency> 
 ----
 
-The `spring-cloud-starter-eureka` dependency transitively comes with the Ribbon libraries (you will find them in your list of `jar` files).
+The `spring-cloud-starter-eureka` dependency transitively comes with the `Ribbon` libraries (you will find them in your list of `jar` files).
 
 
-. In `io.springtrader.consumer.ConsumerController`, replace the autowired `DiscoveryClient` with an autowired `LoadBalancerClient`:
-+
-[source,java]
-----
-@Autowired
-LoadBalancerClient loadBalancer;
-----
-
-. Next, copy the `consume()` method as per below:
+. In `io.springtrader.consumer.ConsumerController`, copy the `consume()` method as per below:
 +
 [source,java]
 ----
@@ -117,7 +104,8 @@ Also, watch the producers and observe that Ribbon is performing round robin load
 [source,json]
 ----
 {
-  "value": 5
+   "server port":8082,
+   "value":4
 }
 ----
 

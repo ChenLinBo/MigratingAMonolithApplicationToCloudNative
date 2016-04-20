@@ -169,20 +169,10 @@ public class SpringtraderConsumerApplication {
 }
 ----
 
-. Rebuild the application:
-+
-----
-$ mvn package
-----
+. Restart the consumer application by launching again  `SpringtraderConsumerApplication`. 
 
-. Rerun the application:
-+
-----
-$ java -jar target/lab_07a-springtrader-consumer-0.0.1-SNAPSHOT.jar
-----
-
-. Now, let's introduce artificial latency into the producer application to cause the load balancer to prefer one instance over the other (on the average).
-Modify `io.springtrader.producer.ProducerController` by pasting in the following source code:
+. We are now moving to the `springtrader-producer` project. Let's introduce artificial latency into the producer application to cause the load balancer to prefer one instance over the other (on the average).
+Inside your `producer` project, modify `io.springtrader.producer.ProducerController` by pasting in the following source code:
 +
 [source,java]
 ----
@@ -225,12 +215,21 @@ $ mvn clean package
 . In the two separate terminal windows running the producers, restart the applications while introducing the `LATENCY` environment variable:
 +
 ----
-$ LATENCY=250 SERVER_PORT=8080 java -jar target/springtrader-producer-0.0.1-SNAPSHOT.jar
-$ LATENCY=1000 SERVER_PORT=8082 java -jar target/springtrader-producer-0.0.1-SNAPSHOT.jar
+Linux, MacOS:
+$ LATENCY=250  SERVER_PORT=8080 java -jar target/lab_07a-springtrader-producer-0.0.1-SNAPSHOT.jar
+$ LATENCY=1000 SERVER_PORT=8082 java -Deureka.instance.metadataMap.instanceId=p8082 -jar target/lab_07a-springtrader-producer-0.0.1-SNAPSHOT.jar
+
+Windows:
+> set SERVER_PORT=8080
+> set LATENCY=250 
+> java -jar target/lab_07a-springtrader-producer-0.0.1-SNAPSHOT.jar
+> set SERVER_PORT=8082
+> set LATENCY=1000 
+> java -Deureka.instance.metadataMap.instanceId=p8082 -jar target/lab_07a-springtrader-producer-0.0.1-SNAPSHOT.jar
 ----
 
-. Connect to http://localhost:8081 .
-You should see log messages in the consumer indicating that the load balancer has started calculating weights:
+. Open the `consumer` application console.
+You should see log messages indicating that the load balancer has started calculating weights:
 +
 ----
 2015-02-24 09:14:49.617  INFO 86301 --- [tTimer-producer] c.n.l.WeightedResponseTimeRule           : Weight adjusting job started

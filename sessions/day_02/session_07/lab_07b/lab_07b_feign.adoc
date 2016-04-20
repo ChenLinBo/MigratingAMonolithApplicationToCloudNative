@@ -1,57 +1,34 @@
 = Lab 07b - Declarative REST Clients with Feign
 
+Estimated time to complete: 15 minutes
 [abstract]
 --
 Let's continue learning the components found in Spring Cloud to implement patterns for distributed systems.
-We'll again use Spring Cloud Netflix to implement client-side load balancing with Ribbon.
-However, this time we'll use a declarative REST repository based on Netflix Feign.
+This lab is a small extension to the Ribbon lab. It uses Netflix Feign for the REST calls.
+We will use a declarative REST repository based on Feign.
 
-In this lab, we'll do the following:
 
-. Refactor the consumer application from link:../../session_07/lab_07a/lab_07a.adoc[Lab 07a] to use a `ProducerClient` enabled by Feign
+We will do the following:
+
+. Improve the consumer application from link:../../session_07/lab_07a/lab_07a.adoc[Lab 07a] to use a `ProducerClient` enabled by Feign
 . Test the new consumer version against our local pool of producers
 --
 
+
 == Setup
 
-. A completed `springtrader-config-server` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-config-server` for your convenience.
-In a terminal window, change to that directory, rebuild, and run the application:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-config-server
-$ mvn package
-$ java -jar target/lab_07b-springtrader-config-server-0.0.1-SNAPSHOT.jar
-----
+. You can just reuse the Eureka server and the 2 producers from Lab 07a as shown below:
 
-. A completed `springtrader-eureka` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-eureka` for your convenience.
-In a separate terminal window, change to that directory, rebuild, and run the application:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-eureka
-$ mvn package
-$ java -jar target/lab_07b-springtrader-eureka-0.0.1-SNAPSHOT.jar
-----
+|=======
+|Eureka |http://localhost:8761
+|Producer 1 |http://localhost:8080
+|Producer 2 |http://localhost:8082 
+|=======
 
-. A completed `springtrader-producer` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-producer` for your convenience.
-In two separate terminal windows, change to that directory, rebuild, and run the application (on different ports):
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-producer
-$ mvn package
-$ SERVER_PORT=8080 java -jar target/lab_07b-springtrader-producer-0.0.1-SNAPSHOT.jar
-$ SERVER_PORT=8082 java -jar target/lab_07b-springtrader-producer-0.0.1-SNAPSHOT.jar
-----
+In case you did not have time to complete the lab 07a, you can run all 3 application instances from the `complete` folder.
 
-In case of WINDOWS, run following
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-producer
-$ mvn package
-$ set SERVER_PORT=8080 java -jar target/lab_07b-springtrader-producer-0.0.1-SNAPSHOT.jar
-$ set SERVER_PORT=8082 java -jar target/lab_07b-springtrader-producer-0.0.1-SNAPSHOT.jar
-----
 
-. Ensure you have two instances of the producer service registered in Eureka (http://locahost:8761):
+. Once you are ready to go, ensure you have two instances of the producer service registered in Eureka (http://locahost:8761):
 +
 image::../../../Common/images/ribbon_1.png[]
 
@@ -103,27 +80,6 @@ String consume() {
 }
 ----
 
-. Build the application:
-+
-----
-$ mvn package
-----
+. Restart the `consumer` application by launching `SpringtraderConsumerApplication`
 
-. Run the application:
-+
-----
-$ java -jar target/lab_07b-springtrader-consumer-0.0.1-SNAPSHOT.jar
-----
-
-. Test the consumer application and show that it is still receiving values from the producers.
-Also, watch the producers and observe that Ribbon is performing round robin load balancing across the two producers:
-+
-----
-http://localhost:8081
-
-{
-  "value": 0
-}
-----
-
-Keep refreshing your webpage and the value should increment.
+. Test the consumer application on http://localhost:8091/ and show that it is still receiving values from the producers. It should behave exactly like in the previous lab. The only difference is that your REST binding code is slightly more concise and elegant.

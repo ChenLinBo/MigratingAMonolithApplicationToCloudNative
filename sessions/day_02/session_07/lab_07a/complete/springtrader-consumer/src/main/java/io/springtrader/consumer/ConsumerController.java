@@ -7,14 +7,16 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class ConsumerController {
-
+    
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+    
+    @RequestMapping(value="/", produces="application/json")
+    public String consume() {
 
-    @RequestMapping(value = "/", produces = "application/json")
-    String consume() {
         ProducerResponse response = restTemplate.getForObject("http://producer", ProducerResponse.class);
-        return String.format("{\"value\":%d}", response.getValue());
-    }
+        return String.format("{\"server port\":%d, \"value\":%d}", response.getServerPort(), response.getValue());
 
+    }
+   
 }

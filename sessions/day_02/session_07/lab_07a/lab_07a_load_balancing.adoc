@@ -77,6 +77,22 @@ $ cd $COURSE_HOME/day_02/session_07/lab_07a/initial/springtrader-consumer
 +
 and import the project (via `pom.xml`) into your IDE of choice.
 
+. Where is Ribbon?
++
+You might be interested to know how your Ribbon Client has been included inside your project so it can be used by our Consumer. Inside your `pom.xml` file, you will find the following dependency:
+
++
+[source,xml]
+----
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency> 
+----
+
+The `spring-cloud-starter-eureka` dependency transitively comes with the Ribbon libraries (you will find them in your list of `jar` files).
+
+
 . In `io.springtrader.consumer.ConsumerController`, replace the autowired `DiscoveryClient` with an autowired `LoadBalancerClient`:
 +
 [source,java]
@@ -103,17 +119,7 @@ LoadBalancerClient loadBalancer;
     }
 ----
 
-. Build the application:
-+
-----
-$ mvn clean package
-----
-
-. Run the application:
-+
-----
-$ java -jar target/lab_07a-springtrader-consumer-0.0.1-SNAPSHOT.jar
-----
+. Run your application by launching `SpringtraderConsumerApplication`. 
 
 . Connect to http://localhost:8091/ and test the consumer application. It should receive values from the producers.
 Also, watch the producers and observe that Ribbon is performing round robin load balancing across the two producers:
@@ -125,38 +131,6 @@ Also, watch the producers and observe that Ribbon is performing round robin load
 }
 ----
 
-== Using `RestTemplate`
-
-. In `io.springtrader.consumer.ConsumerController`, replace the autowired `LoadBalancerClient` with an autowired `RestTemplate`:
-+
-[source,java]
-----
-@Autowired
-RestTemplate restTemplate;
-----
-
-. Next, update `consume()` to use the `RestTemplate`. We'll tell it to access the producer service by it's logical name:
-+
-[source,java]
-----
-@RequestMapping(value = "/", produces = "application/json")
-String consume() {
-  ProducerResponse response = restTemplate.getForObject("http://producer", ProducerResponse.class);
-  return String.format("{\"value\":%d}", response.getValue());
-}
-----
-
-. Run the `consumer` application by launching `SpringtraderConsumerApplication` from your IDE
-
-
-. Connect to http://localhost:8091 in order to test the consumer application. It should receive values from the producers.
-Also, watch the producers and observe that Ribbon is resolving the logical name on behalf of the `RestTemplate` and then still performing round robin load balancing across the two producers:
-+
-----
-{
-  "value": 5
-}
-----
 
 == Trying Different Load Balancing Algorithms
 

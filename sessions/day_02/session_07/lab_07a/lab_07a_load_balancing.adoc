@@ -98,8 +98,8 @@ The `spring-cloud-starter-eureka` dependency transitively comes with the `Ribbon
 
 . Run your application by launching `SpringtraderConsumerApplication`. 
 
-. Connect to http://localhost:8091/ and test the consumer application. It should receive values from the producers.
-Also, watch the producers and observe that Ribbon is performing round robin load balancing across the two producers:
+. Connect to http://localhost:8091/ and access the consumer application several times. Per the round-robin algorithm, 50% if the requests should be served by producer 8080 (and the other half should go to producer 8082).
+
 +
 [source,json]
 ----
@@ -152,7 +152,7 @@ public class SpringtraderConsumerApplication {
 }
 ----
 
-. Restart the consumer application by launching again  `SpringtraderConsumerApplication`. 
+. Restart the consumer application by launching again  `SpringtraderConsumerApplication`. At this stage, your requests should be still served per the round-robin algorithm (requests are share equally between both `producer` instances.
 
 . We are now moving to the `springtrader-producer` project. Let's introduce artificial latency into the producer application to cause the load balancer to prefer one instance over the other (on the average).
 Inside your `producer` project, modify `io.springtrader.producer.ProducerController` by pasting in the following source code:

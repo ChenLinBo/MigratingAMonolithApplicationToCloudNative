@@ -17,11 +17,10 @@ In this lab, we'll do the following:
 
 NOTE: before starting this lab, you can stop all the applications you had started in the previous labs. You will not need them anymore.
 
-This lab uses 4 different applications. Here is a table that you can refer to regarding the corresponding port numbers.
+This lab uses 4 running applications. Here is a table that you can refer to during the lab.
 
 |=======
 |Eureka |http://localhost:8761
-|Config Server | http://localhost:8888
 |Producer 1 |http://localhost:8080
 |Producer 2 |http://localhost:8082 
 |Consumer|http://localhost:8091
@@ -32,10 +31,6 @@ This lab uses 4 different applications. Here is a table that you can refer to re
 == Setup
 
 . Four projects have been placed inside `$COURSE_HOME/day_02/session_07/lab_07a/initial/`. Import all of them inside your IDE of choice.
-
-. Config Server: open `springtrader-config-server` and launch the class `SpringtraderConfigServerApplication`
-
-. Connect to http://localhost:8888/demo/default to confirm that your config server has been started successfully. 
 
 . Eureka: Open `springtrader-eureka` and launch the class `SpringtraderEurekaApplication`
 

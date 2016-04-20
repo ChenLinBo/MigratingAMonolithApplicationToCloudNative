@@ -102,14 +102,9 @@ LoadBalancerClient loadBalancer;
 ----
 @RequestMapping(value="/", produces="application/json")
     public String consume() {
-        ServiceInstance producerInstance = loadBalancer.choose("producer");
-        
-        // used to log the address of the producer being used
-        // typical expected values: http://myHost:8080 or http://myHost:8082
-        String producerUri = String.format("http://%s:%d", producerInstance.getHost(), producerInstance.getPort());
-        
+                
         ProducerResponse response = restTemplate.getForObject("http://producer", ProducerResponse.class);
-        return String.format("{\"instance\":%s, \"value\":%d}", producerUri, response.getValue());
+        return String.format("{\"server port\":%d, \"value\":%d}", response.getServerPort(), response.getValue());
         
     }
 ----

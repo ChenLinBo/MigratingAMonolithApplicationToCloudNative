@@ -6,9 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>lab_07a-springtrader-consumer</name>
-	<description>Lab 07a - SpringTrader Service Registry Test Consumer</description>
-
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>

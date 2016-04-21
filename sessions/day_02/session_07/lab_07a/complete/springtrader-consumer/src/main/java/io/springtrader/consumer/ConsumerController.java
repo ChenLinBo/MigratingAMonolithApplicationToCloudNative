@@ -14,6 +14,7 @@ public class ConsumerController {
     @RequestMapping(value="/", produces="application/json")
     public String consume() {
 
+        
         ProducerResponse response = restTemplate.getForObject("http://producer", ProducerResponse.class);
         return String.format("{\"server port\":%d, \"value\":%d}", response.getServerPort(), response.getValue());
 

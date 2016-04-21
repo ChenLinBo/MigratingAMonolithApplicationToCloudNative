@@ -8,7 +8,7 @@ However, this time we'll add an implementation of the Circuit Breaker pattern us
 
 In this lab, we'll do the following:
 
-. Refactor the consumer application from link:../../session_07/lab_07a/lab_07a_load_balancing.adoc[Lab 07a] to add a slightly different `ProducerClient` than we added in link:../../session_07/lab_07b/lab_07b_feign.adoc[Lab 07b].
+. Refactor the consumer application from link:../../session_07/lab_07a/lab_07a_load_balancing.adoc[Lab 07a] to add a \ `ProducerClient`.
 . Test the new consumer version against our local pool of producers
 . Kill one of the producers and watch the consumer failover.
 . Kill the remaining producer and watch the circuit breaker fallback behavior.
@@ -17,59 +17,29 @@ In this lab, we'll do the following:
 
 == Setup
 
-. A completed `springtrader-config-server` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-config-server` for your convenience.
-In a terminal window, change to that directory, rebuild, and run the application:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-config-server
-$ mvn clean package
-$ java -jar target/lab_07c-springtrader-config-server-0.0.1-SNAPSHOT.jar
-----
+. You can just reuse the Eureka server and the 2 producers from Lab 07a as shown below:
 
-. A completed `springtrader-eureka` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-eureka` for your convenience.
-In a separate terminal window, change to that directory, rebuild, and run the application:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-eureka
-$ mvn clean package
-$ java -jar target/lab_07c-springtrader-eureka-0.0.1-SNAPSHOT.jar
-----
+|=======
+|Eureka |http://localhost:8761
+|Producer 1 |http://localhost:8080
+|Producer 2 |http://localhost:8082 
+|=======
 
-. A completed `springtrader-producer` project has been placed in `$COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-producer` for your convenience.
-In two separate terminal windows, change to that directory, rebuild, and run the application (on different ports):
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-producer
-$ mvn package
-$ SERVER_PORT=8080 java -jar target/lab_07c-springtrader-producer-0.0.1-SNAPSHOT.jar
-$ SERVER_PORT=8082 java -jar target/lab_07c-springtrader-producer-0.0.1-SNAPSHOT.jar
-----
-
-if you are working on WINDOWS prompt, then run following
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-producer
-$ mvn package
-$ set SERVER_PORT=8080 && java -jar target/lab_07c-springtrader-producer-0.0.1-SNAPSHOT.jar
-$ set SERVER_PORT=8082 && java -jar target/lab_07c-springtrader-producer-0.0.1-SNAPSHOT.jar
-----
+In case you did not have time to complete the lab 07a, you can run all 3 application instances from lab 07a's `complete` folder.
 
 
-. Ensure you have two instances of the producer service registered in Eureka:
+. Ensure you have two instances of the producer service registered in Eureka (http://locahost:8761):
 +
 image::../../../Common/images/ribbon_1.png[]
 
 == Using Hystrix
 
-. Change to the lab directory:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-consumer
-----
-+
-and import the project (via `pom.xml`) into your IDE of choice.
+NOTE: all the failover configuration is done on the `consumer` side (as opposed to the `producer` side. In case the `producer` fails, the `consumer` should know where to fall back to.
 
-. Add the following dependency to `pom.xml`:
+
+. Inside your IDE, go into the `springtrader-consumer` project.
+
+. Open its `pom.xml` file and add the following dependency:
 +
 [source,xml]
 ----
@@ -79,19 +49,10 @@ and import the project (via `pom.xml`) into your IDE of choice.
 </dependency>
 ----
 
-. Add a `@EnableCircuitBreaker` annotation to the class `io.springtrader.consumer.SpringtraderConsumerApplication`.
-
-. Add two constructors to the class `io.springtrader.consumer.ProducerResponse`:
+. You now need to add the relevant configuration for your `Circuit Breaker`. We will rely on Spring Boot's default configuration.
 +
-[source,java]
-----
-public ProducerResponse() {
-}
+Inside the class `io.springtrader.consumer.SpringtraderConsumerApplication`, add the annotation `@EnableCircuitBreaker`.
 
-public ProducerResponse(int value) {
-    this.value = value;
-}
-----
 
 . Create the class `io.springtrader.consumer.ProducerClient` and into it paste the following code:
 +
@@ -109,8 +70,11 @@ public class ProducerClient {
         return restTemplate.getForObject("http://producer", ProducerResponse.class);
     }
 
-    private ProducerResponse getProducerFallback() {
-        return new ProducerResponse(42);
+    public ProducerResponse getProducerFallback() {
+        ProducerResponse response = new ProducerResponse();
+        response.setValue(-1);
+        response.setServerPort(-1);
+        return response;
     }
 }
 ----
@@ -129,32 +93,23 @@ String consume() {
 }
 ----
 
-. To the file `src/main/resources/application.properties` add the following:
+. Inside `src/main/resources/application.yml` add the following:
 +
 ----
-producer.ribbon.ServerListRefreshInterval=5000
+producer.ribbon.ServerListRefreshInterval: 5000
 ----
 
-. Build the application:
-+
-----
-$ mvn clean package
-----
+. Start the application by launching `SpringtraderConsumerApplication`
 
-. Run the application:
-+
-----
-$ java -jar target/lab_07c-springtrader-consumer-0.0.1-SNAPSHOT.jar
-----
+In your logs, you should see that Hystrix has been loaded:
+```
+c.n.h.c.m.e.HystrixMetricsPoller         : Starting HystrixMetricsPoller
+ration$HystrixMetricsPollerConfiguration : Starting poller
+```
 
-. Test the consumer application and show that it is still receiving values from the producers.
-Also, watch the producers and observe that Ribbon is performing round robin load balancing across the two producers:
-+
-----
-http://localhost:8081
 
-Goto and check both producer windows. You should be getting a value counter starting from 0. Refresh your page and then see the counter increases.
-----
+. Test the consumer application on http://localhost:8091 and show that it is still receiving values from the producers.
+Also, watch the producers and observe that Ribbon is performing round robin load balancing across the two producers
 
 == Failover
 
@@ -162,7 +117,7 @@ Goto and check both producer windows. You should be getting a value counter star
 
 . reload url, test the consumer application and show that it is still receiving values from one of the producers.
 +
-You may get the fallback value of `42` a few times due to the lag in removing the failed instance from the Ribbon cache. Eventually it will converge to hitting the only remaining healthy instance.
+You may get the fallback value of `-1` a few times due to the lag in removing the failed instance from the Ribbon cache. Eventually it will converge to hitting the only remaining healthy instance.
 
 == Fallback
 
@@ -178,4 +133,4 @@ You may get the fallback value of `42` a few times due to the lag in removing th
 
 == Next Steps
 
-Do not shut anything down when you complete this lab. We will add one additional component in link:../../session_07/lab_07d/lab_07d_hystrix_dashboard.adoc[Lab 07d].
+Do not shut anything down when you complete this lab. We will add one additional component in link:../../session_07/lab_07d/lab_07d_hystrix_dashboard.adoc[Lab 07c].

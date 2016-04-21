@@ -1,0 +1,55 @@
+= Migrating a Monolith Application to Cloud Native
+
+:source-highlighter: pygments
+
+:leveloffset: +1
+
+include::student_guide.adoc[]
+
+include::sessions/day_01/session_01/lab_01a/lab_01a_boot_getting_started.adoc[]
+
+include::sessions/day_01/session_01/lab_01b/lab_01b_boot_with_jetty.adoc[]
+
+include::sessions/day_01/session_01/lab_01c/lab_01c_boot_properties.adoc[]
+
+include::sessions/day_01/session_01/lab_01d/lab_01d_boot_actuator.adoc[]
+
+include::sessions/day_01/session_02/lab_02a/lab_02a_cf_push.adoc[]
+
+include::sessions/day_01/session_02/lab_02b/lab_02b_cf_service.adoc[]
+
+include::sessions/day_01/session_02/lab_02c/lab_02c_cf_scaling.adoc[]
+
+include::sessions/day_01/session_02/lab_02d/lab_02d_cf_monitoring.adoc[]
+
+include::sessions/day_01/session_03/lab_03a/lab_03a_rest.adoc[]
+
+include::sessions/day_01/session_03/lab_03b/lab_03b_service_binding.adoc[]
+
+include::sessions/day_01/session_04/lab_04a/lab_04a_bounded_contexts.adoc[]
+
+include::sessions/day_01/session_05/lab_05a/lab_05a_quotes.adoc[]
+
+include::sessions/day_01/session_05/lab_05b/lab_05b_accounts.adoc[]
+
+include::sessions/day_01/session_05/lab_05c/lab_05c_portfolio.adoc[]
+
+include::sessions/day_02/session_06/lab_06a/lab_06a_config_server.adoc[]
+
+include::sessions/day_02/session_06/lab_06b/lab_06b_discovery.adoc[]
+
+include::sessions/day_02/session_07/lab_07a/lab_07a_load_balancing.adoc[]
+
+include::sessions/day_02/session_07/lab_07b/lab_07b_feign.adoc[]
+
+include::sessions/day_02/session_07/lab_07c/lab_07c_fault_tolerance.adoc[]
+
+include::sessions/day_02/session_07/lab_07d/lab_07d_hystrix_dashboard.adoc[]
+
+include::sessions/day_02/session_08/lab_08a/lab_08a_oauth2_server.adoc[]
+
+include::sessions/day_02/session_08/lab_08b/lab_08b_secure.adoc[]
+
+include::sessions/day_02/session_09/lab_09a/lab_09a_deploy_microservices_app.adoc[]
+
+:leveloffset: -1

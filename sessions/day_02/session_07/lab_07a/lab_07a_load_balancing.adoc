@@ -83,7 +83,7 @@ You might be interested to know how your Ribbon Client has been included inside 
 The `spring-cloud-starter-eureka` dependency transitively comes with the `Ribbon` libraries (you will find them in your list of `jar` files).
 
 
-. In `io.springtrader.consumer.ConsumerController`, copy the `consume()` method as per below:
+. In `io.springtrader.consumer.ConsumerController`, include the `consume()` method as follows:
 +
 [source,java]
 ----

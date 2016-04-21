@@ -2,16 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.springtrader</groupId>
-	<artifactId>lab_07c-springtrader-eureka-solution</artifactId>
+	<artifactId>lab_07d-springtrader-eureka-solution</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
-	<description>Lab 07c - Solution: SpringTrader Eureka Server</description>
 
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>1.0.0.RELEASE</version>
+		<version>Angel.SR6</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>

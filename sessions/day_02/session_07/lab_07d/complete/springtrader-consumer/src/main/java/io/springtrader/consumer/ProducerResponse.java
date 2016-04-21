@@ -2,12 +2,14 @@ package io.springtrader.consumer;
 
 public class ProducerResponse {
     private int value;
+    private int serverPort;
 
-    public ProducerResponse() {
+    public int getServerPort() {
+        return serverPort;
     }
 
-    public ProducerResponse(int value) {
-        this.value = value;
+    public void setServerPort(int serverPort) {
+        this.serverPort = serverPort;
     }
 
     public void setValue(int value) {

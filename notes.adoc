@@ -6,6 +6,8 @@
 
 include::student_guide.adoc[]
 
+include::sessions/setup.adoc[]
+
 include::sessions/day_01/session_01/lab_01a/lab_01a_boot_getting_started.adoc[]
 
 include::sessions/day_01/session_01/lab_01b/lab_01b_boot_with_jetty.adoc[]

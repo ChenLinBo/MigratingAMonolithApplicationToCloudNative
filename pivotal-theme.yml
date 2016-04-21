@@ -1,0 +1,12 @@
+page:
+  margin: 0.75in 0.75in 2in 0.75in
+footer:
+  height: 1in
+  padding: 1in 0in 0in 1in
+  line_height: 1.2
+  font_color: #333333
+  font_size: 8
+  recto_content:
+    center: "Copyright Pivotal 2016 - {section-or-chapter-title} - Page {page-number}"
+  verso_content:
+    center: "Copyright Pivotal 2016 - {section-or-chapter-title} - Page {page-number}"

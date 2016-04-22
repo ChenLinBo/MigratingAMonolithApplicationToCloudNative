@@ -1,4 +1,4 @@
-= Lab 07d - Monitoring Circuit Breakers with Hystrix Dashboard
+= Lab 07c - Monitoring Circuit Breakers with Hystrix Dashboard
 
 [abstract]
 --
@@ -7,7 +7,7 @@ Now we'll monitor what's happening in our Circuit Breakers by using Netflix Hyst
 
 In this lab, we'll do the following:
 
-. Run everything that we created in  link:../../session_07/lab_07c/lab_07c_fault_tolerance.adoc[Lab 07c].
+. Run everything that we created in  link:../../session_07/lab_07b/lab_07b_fault_tolerance.adoc[Lab 07b].
 . Create a Hystrix Dashboard
 . Kill both of the producers and watch the circuit open in the Dashboard.
 . Restart a producer and watch the circuit close in the Dashboard.
@@ -15,14 +15,14 @@ In this lab, we'll do the following:
 
 == Setup
 
-. Make sure you've completed link:../../session_07/lab_07c/lab_07c_fault_tolerance.adoc[Lab 07c] and have everything still running.
+. Make sure you've completed link:../../session_07/lab_07b/lab_07b_fault_tolerance.adoc[Lab 07b] and have everything still running.
 
 == Building the Hystrix Dashboard
 
 . Change to the lab directory:
 +
 ----
-$ cd $COURSE_HOME/day_02/session_07/lab_07d/initial/springtrader-hystrix-dashboard
+$ cd $COURSE_HOME/day_02/session_07/lab_07c/initial/springtrader-hystrix-dashboard
 ----
 +
 and import the project (via `pom.xml`) into your IDE of choice.

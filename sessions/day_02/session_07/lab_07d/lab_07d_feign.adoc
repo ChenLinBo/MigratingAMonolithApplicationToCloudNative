@@ -3,9 +3,9 @@
 Estimated time to complete: 15 minutes
 [abstract]
 --
-Let's continue learning the components found in Spring Cloud to implement patterns for distributed systems.
-This lab is a small extension to the Ribbon lab. It uses Netflix Feign for the REST calls.
+This lab is a small extension to the link:../../session_07/lab_07a/lab_07a.adoc[Ribbon lab]. It uses Netflix Feign for the REST calls.
 We will use a declarative REST repository based on Feign.
+It does not use Hystrix. You will therefore need to work with a new set of projects.
 
 
 We will do the following:
@@ -17,16 +17,13 @@ We will do the following:
 
 == Setup
 
-. You can just reuse the Eureka server and the 2 producers from Lab 07a as shown below:
+. Stop all the running applications and remove the corresponding projects from your IDE
 
-|=======
-|Eureka |http://localhost:8761
-|Producer 1 |http://localhost:8080
-|Producer 2 |http://localhost:8082 
-|=======
+. Inside your IDE, import the projects that have been placed for you inside $COURSE_HOME/day_02/session_07/lab_07b/initial/
 
-In case you did not have time to complete the lab 07a, you can run all 3 application instances from the `complete` folder.
+NOTE: those projects are identical to the ones that you had completed at the end of the Lab 07a (Ribbon).
 
+. Start your Eureka server and 2 producers as we have done in the previous labs. You SHOULD NOT start the consumer as of now. The below applications should be running:
 
 . Once you are ready to go, ensure you have two instances of the producer service registered in Eureka (http://locahost:8761):
 +

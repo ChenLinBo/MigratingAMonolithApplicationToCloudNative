@@ -39,7 +39,7 @@ and import the project (via `pom.xml`) into your IDE of choice.
 
 . Add a `@EnableHystrixDashboard` to the class `io.pivotal.springcloud.hystrixdashboard.HystrixDashboardApplication`.
 
-. Create the file `src/main/resources/application.yml` and into it paste the following:
+. Paste the following inside `src/main/resources/application.yml` :
 +
 ----
 server:
@@ -59,7 +59,7 @@ $ java -jar target/lab_20-hystrix-dashboard-0.0.1-SNAPSHOT.jar
 ----
 
 . Now, access the Hystrix Dashboard at http://localhost:7979/hystrix.
-Enter http://localhost:8081/hystrix.stream into the text field  and click the ``Monitor Stream.''
+Enter `\http://localhost:8091/hystrix.stream` into the text field  and click the ``Monitor Stream.''
 +
 image:../../../Common/images/fortunes_2.png[]
 
@@ -71,7 +71,7 @@ image:../../../Common/images/fortunes_3.png[]
 
 . Shut down both of the producer processes.
 
-. Using `curl`, test the consumer application and show that it is only emitting the fallback value of `42`.
+. Using `curl`, test the consumer application and show that it is only emitting the fallback value of `-1`.
 
 . You should also see the circuit breaker is registering short-circuited requests.
 +

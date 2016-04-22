@@ -1,5 +1,6 @@
 = Lab 07b - Fault-Tolerance with Hystrix
 
+Estimated time to complete: 20 minutes
 [abstract]
 --
 Let's continue learning the components found in Spring Cloud to implement patterns for distributed systems.

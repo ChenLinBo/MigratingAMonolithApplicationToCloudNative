@@ -1,4 +1,4 @@
-= Lab 07c - Fault-Tolerance with Hystrix
+= Lab 07b - Fault-Tolerance with Hystrix
 
 [abstract]
 --

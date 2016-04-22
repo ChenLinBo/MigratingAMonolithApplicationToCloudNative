@@ -13,6 +13,7 @@ public class ConsumerController {
     @RequestMapping(value="/", produces="application/json")
     public String consume() {
 
+        
         ProducerResponse response = client.getValue();
         return String.format("{\"server port\":%d, \"value\":%d}", response.getServerPort(), response.getValue());
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProducerController {
-
+    
     @Value("${server.port}")
     private int serverPort;
     

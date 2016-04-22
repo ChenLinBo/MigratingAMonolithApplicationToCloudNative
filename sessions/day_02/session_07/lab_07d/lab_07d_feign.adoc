@@ -3,7 +3,7 @@
 Estimated time to complete: 15 minutes
 [abstract]
 --
-This lab is a small extension to the link:../../session_07/lab_07a/lab_07a.adoc[Ribbon lab]. It uses Netflix Feign for the REST calls.
+This lab is based on the link:../../session_07/lab_07a/lab_07a.adoc[Ribbon lab]. It uses Netflix Feign for the REST calls.
 We will use a declarative REST repository based on Feign.
 It does not use Hystrix. You will therefore need to work with a new set of projects.
 
@@ -19,7 +19,7 @@ We will do the following:
 
 . Stop all the running applications and remove the corresponding projects from your IDE
 
-. Inside your IDE, import the projects that have been placed for you inside $COURSE_HOME/day_02/session_07/lab_07b/initial/
+. Inside your IDE, import the projects that have been placed for you inside $COURSE_HOME/day_02/session_07/lab_07d/initial/
 
 NOTE: those projects are identical to the ones that you had completed at the end of the Lab 07a (Ribbon).
 
@@ -31,15 +31,7 @@ image::../../../Common/images/ribbon_1.png[]
 
 == Using Feign
 
-. Change to the lab directory:
-+
-----
-$ cd $COURSE_HOME/day_02/session_07/lab_07b/initial/springtrader-consumer
-----
-+
-and import the project (via `pom.xml`) into your IDE of choice.
-
-. Add the following dependency to `pom.xml`:
+. Open your `springtrader-consumer` project inside your IDE. Add the following dependency to `pom.xml`:
 +
 [source,xml]
 ----
@@ -68,15 +60,18 @@ public interface ProducerClient {
 [source,java]
 ----
 @Autowired
-ProducerClient client;
+    ProducerClient client;
+    
+    @RequestMapping(value="/", produces="application/json")
+    public String consume() {
 
-@RequestMapping(value = "/", produces = "application/json")
-String consume() {
-    ProducerResponse response = client.getValue();
-    return String.format("{\"value\":%d}", response.getValue());
-}
+        
+        ProducerResponse response = client.getValue();
+        return String.format("{\"server port\":%d, \"value\":%d}", response.getServerPort(), response.getValue());
+
+    }
 ----
 
-. Restart the `consumer` application by launching `SpringtraderConsumerApplication`
+. Start the `springtrader-consumer` application by launching `SpringtraderConsumerApplication`
 
-. Test the consumer application on http://localhost:8091/ and show that it is still receiving values from the producers. It should behave exactly like in the previous lab. The only difference is that your REST binding code is slightly more concise and elegant.
+. Test the consumer application on http://localhost:8091/ and show that it is still receiving values from the producers. It should behave exactly like in the  lab 07a. The only difference is that your REST binding code is slightly more concise and elegant.

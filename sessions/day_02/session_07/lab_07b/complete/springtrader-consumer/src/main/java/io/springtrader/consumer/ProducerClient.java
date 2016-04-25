@@ -1,12 +1,28 @@
 package io.springtrader.consumer;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-@FeignClient("producer")
-public interface ProducerClient {
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
-    ProducerResponse getValue();
+@Component
+public class ProducerClient {
+
+    @Autowired
+    @LoadBalanced
+    RestTemplate restTemplate;
+
+    @HystrixCommand(fallbackMethod = "getProducerFallback")
+    public ProducerResponse getValue() {
+        return restTemplate.getForObject("http://producer", ProducerResponse.class);
+    }
+
+    public ProducerResponse getProducerFallback() {
+        ProducerResponse response = new ProducerResponse();
+        response.setValue(-1);
+        response.setServerPort(-1);
+        return response;
+    }
 }

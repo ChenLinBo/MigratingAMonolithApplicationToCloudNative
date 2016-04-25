@@ -83,7 +83,7 @@ You might be interested to know how your Ribbon Client has been included inside 
 The `spring-cloud-starter-eureka` dependency transitively comes with the `Ribbon` libraries (you will find them in your list of `jar` files).
 
 
-. In `io.springtrader.consumer.ConsumerController`, copy the `consume()` method as per below:
+. In `io.springtrader.consumer.ConsumerController`, include the `consume()` method as follows:
 +
 [source,java]
 ----
@@ -108,3 +108,13 @@ The `spring-cloud-starter-eureka` dependency transitively comes with the `Ribbon
    "value":4
 }
 ----
+
+== Failing one of the producers
+
+You now have a Load Balancer that works across 2 Producers. But what happens when one of the Producers fails? 
+
+. Stop one of the producers and try to access the consumer a few times. What can you notice?
+
+. In the next lab, you will learn how to use a `circuit breaker` so failures can be handled gracefully.
+
+

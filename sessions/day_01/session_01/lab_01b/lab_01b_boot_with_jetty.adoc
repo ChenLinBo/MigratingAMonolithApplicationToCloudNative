@@ -2,29 +2,17 @@
 
 == Build and Run with Embedded Apache Tomcat
 
-Spring Boot will embed Apache Tomcat by default.
+Spring Boot embeds `Apache Tomcat` by default.
 
-. Change to the lab directory (or continue to build off of lab_01a):
-+
-----
-$ cd $COURSE_HOME/day_01/session_01/lab_01b/initial/hello-spring-boot
-----
+NOTE: For this lab, you should keep working with the project that you have created in Lab 01a
 
-. Run the application:
-+
-The easiest way is to run the `HelloSpringBootApplication` class from Eclipse/IntelliJ.
-Alternatively, you can use the command line as shown below:
-+
-----
-$ mvn package
-$ java -jar target/lab_01b-hello-spring-boot-0.0.1-SNAPSHOT.jar
-----
+. Run the application by launching the `HelloSpringBootApplication` class from your IDE
 +
 You should see the application start up an embedded Apache Tomcat server on port 8080:
 +
 ----
-2015-05-03 13:20:51.690  INFO 2465 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
-2015-05-03 13:20:51.691  INFO 2465 --- [           main] i.p.s.hello.HelloSpringBootApplication   : Started HelloSpringBootApplication in 3.023 seconds (JVM running for 3.432)
+s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+i.p.s.hello.HelloSpringBootApplication   : Started HelloSpringBootApplication in 3.023 seconds (JVM running for 3.432)
 ----
 
 . Visit the application in the browser (http://localhost:8080), and you should see the following:
@@ -32,6 +20,28 @@ You should see the application start up an embedded Apache Tomcat server on port
 ----
 Hello World!
 ----
+
+
+== Hot reload with Spring Boot Devtools
+
+One of the coolest features of Spring Boot is that most of your code can hot redeploy (you do not have to restart your application for changes to be taken into account).
+
+. Open your `pom.xml` file and add the following dependency:
+
++
+----
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+</dependency>
+----
+
+. Restart your application once
+
+. Inside `HelloSpringBootApplication`, replace the String "Hello World" with "Hello Wooooorld". You will see that the application redeploys the changes automatically. You just have to go to your browser and refresh so you can see the new value.
+
+NOTE: You still need a few seconds for Spring Boot to refresh your application. It takes 20-30% of the time that it would take to restart your application completely.
+
 
 == Build and Run with Embedded Eclipse Jetty
 
@@ -71,8 +81,8 @@ You can run it within your Development environment or from the command line (sam
 +
 You should see the application start up an embedded Jetty server on port 8080:
 ----
-2015-05-03 13:26:31.370  INFO 3078 --- [           main] .s.b.c.e.j.JettyEmbeddedServletContainer : Jetty started on port(s) 8080 (http/1.1)
-2015-05-03 13:26:31.371  INFO 3078 --- [           main] i.p.s.hello.HelloSpringBootApplication   : Started HelloSpringBootApplication in 3.671 seconds (JVM running for 4.079)
+s.b.c.e.j.JettyEmbeddedServletContainer : Jetty started on port(s) 8080 (http/1.1)
+i.p.s.hello.HelloSpringBootApplication   : Started HelloSpringBootApplication in 3.671 seconds (JVM running for 4.079)
 ----
 
 . Visit the application in the browser (http://localhost:8080), and you should see the following:
@@ -80,3 +90,5 @@ You should see the application start up an embedded Jetty server on port 8080:
 ----
 Hello World!
 ----
+
+NOTE: Hot redeploy works with Jetty in the same way as it works for Tomcat

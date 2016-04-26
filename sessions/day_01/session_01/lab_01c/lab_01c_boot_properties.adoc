@@ -1,5 +1,7 @@
 = Lab 1c - Externalizing Configuration with Spring Boot
 
+Estimated time to complete: 20 minutes
+
 == Refactoring to Externalize the Config
 
 . You should work using the same project as in the previous labs

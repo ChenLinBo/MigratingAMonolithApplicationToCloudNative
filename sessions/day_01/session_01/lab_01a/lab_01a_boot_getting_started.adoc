@@ -1,5 +1,9 @@
 = Lab 1a - Getting Started with Spring Boot
 
+Estimated time to complete: 20 minutes
+
+== Generate a project from http://start.spring.io
+
 . In your browser, visit http://start.spring.io.
 
 . Fill out the *Project metadata* fields as follows:
@@ -12,6 +16,8 @@ Search For Dependencies:: `Web`
 
 . Click the *Generate Project* button. Your browser will download a zip file.
 Unpack that zip file at `$COURSE_HOME/day_01/session_01/lab_01a/initial`.
+
+== Run it locally
 
 . Import the project's `pom.xml` into your editor/IDE of choice.
 

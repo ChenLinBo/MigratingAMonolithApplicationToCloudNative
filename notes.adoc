@@ -42,11 +42,11 @@ include::sessions/day_02/session_06/lab_06b/lab_06b_discovery.adoc[]
 
 include::sessions/day_02/session_07/lab_07a/lab_07a_load_balancing.adoc[]
 
-include::sessions/day_02/session_07/lab_07b/lab_07b_feign.adoc[]
+include::sessions/day_02/session_07/lab_07b/lab_07b_fault_tolerance.adoc[]
 
-include::sessions/day_02/session_07/lab_07c/lab_07c_fault_tolerance.adoc[]
+include::sessions/day_02/session_07/lab_07c/lab_07c_hystrix_dashboard.adoc[]
 
-include::sessions/day_02/session_07/lab_07d/lab_07d_hystrix_dashboard.adoc[]
+include::sessions/day_02/session_07/lab_07d/lab_07d_feign.adoc[]
 
 include::sessions/day_02/session_08/lab_08a/lab_08a_oauth2_server.adoc[]
 

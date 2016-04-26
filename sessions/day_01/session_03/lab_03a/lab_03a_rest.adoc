@@ -299,7 +299,7 @@ http://localhost:8080/companies/search/nameContains?q=Apple&size=5
 
 == Pushing to Cloud Foundry
 
-. Create an application manifest in +manifest.yml+:
+. An empty `manifest.yml` file has been placed at the root of your project. Paste the below configuration inside your manifest file:
 +
 [source,yml]
 ----

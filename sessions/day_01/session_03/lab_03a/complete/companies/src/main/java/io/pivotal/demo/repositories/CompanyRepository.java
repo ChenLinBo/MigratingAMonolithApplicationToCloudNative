@@ -1,4 +1,4 @@
-package io.pivotal.demo.quotes.repositories;
+package io.pivotal.demo.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import io.pivotal.demo.quotes.domain.Company;
+import io.pivotal.demo.domain.Company;
 
 @RepositoryRestResource(collectionResourceRel = "companies", path = "companies")
 public interface CompanyRepository extends PagingAndSortingRepository<Company, Long> {

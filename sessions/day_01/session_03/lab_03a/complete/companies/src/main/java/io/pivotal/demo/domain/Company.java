@@ -1,4 +1,4 @@
-package io.pivotal.demo.quotes.domain;
+package io.pivotal.demo.domain;
 
 import java.io.Serializable;
 
@@ -7,10 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-
-
-
 
 @Entity
 @Table(name = "COMPANIES")

@@ -1,4 +1,4 @@
-package io.pivotal.demo.quotes;
+package io.pivotal.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +9,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @SpringBootApplication
 @EnableJpaRepositories
 @Import(RepositoryRestMvcConfiguration.class)
-public class QuotesApplication {
+public class CompaniesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(QuotesApplication.class, args);
+        SpringApplication.run(CompaniesApplication.class, args);
     }
 }

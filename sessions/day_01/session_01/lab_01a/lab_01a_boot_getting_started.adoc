@@ -10,7 +10,7 @@ Estimated time to complete: 20 minutes
 +
 Group:: `io.spring.pivotal`
 Artifact:: `hello-spring-boot`
-Package Name:: `io.pivotal.spring.hello`
+Package Name:: `io.pivotal.spring`
 Search For Dependencies:: `Web`
 
 

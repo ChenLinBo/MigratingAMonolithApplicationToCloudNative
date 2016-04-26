@@ -1,8 +1,1 @@
 greeting: Hello
-
----
-
-spring:
-  profiles: spanish
-
-greeting: Hola

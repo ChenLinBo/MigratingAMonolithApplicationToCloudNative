@@ -1,5 +1,6 @@
-package io.pivotal.demo.quotes;
+package io.pivotal.demo;
 
+import io.pivotal.demo.quotes.QuotesApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;

@@ -6,29 +6,6 @@ These course materials can be found link:https://github.com/S2EDU/MigratingAMono
 
 == Student Guide
 
-=== Resources
-
-Make sure you have installed the necessary software for this course - see link:sessions/setup.adoc[Setup].
-
-The code we need is on github, so (in a Terminal/Cmd window) download it as follows:
-
-----
-$ git clone https://github.com/S2EDU/MigratingAMonolithApplicationToCloudNative.git
-
-$ git clone https://github.com/caxqueiroz/springtrader-monolith.git
-
-$ git clone https://github.com/caxqueiroz/springtrader-microservices.git
-
-----
-
-////
-For convenience, at this link:https://personal.filesanywhere.com/fs/v.aspx?v=8d6c6788586072ac73a3[link] you can find:
-
-  . A PDF of these lab instructions
-  . A zip file of the lab-instructions in HTML format - simply download, unpack and open `index.html`
-  . A PDF of the slides - these are more detailed than the individual PDFs linked to each session (below) and are intended
-    for reference after the course
-////
 === Schedule
 
 The lectures for this class are intentionally very light and are only intended to set the stage for the hands-on labs.
@@ -37,19 +14,19 @@ The overwhelming majority of our time will be spent writing code directly!
 Approximate session times are as follows.  Lab times vary by group and may be different for your course.
 
 ==== Day One
-9:00 AM - 10:30 AM:: *Session 1:* _Cloud-Native Architecture Overview and Building Twelve-Factor Apps with Spring Boot_
+9:00 AM - 10:30 AM:: *Session 1:* _Spring Boot_
 10:30 AM - 10:45 AM:: Morning Break
-10:45 AM - 12:30 PM:: *Session 2:* _Operating Twelve-Factor Apps with Cloud Foundry_
+10:45 AM - 12:30 PM:: *Session 2:* _Cloud Foundry_
 12:30 PM - 1:30 PM:: Lunch
-1:30 PM - 2:30 PM:: *Session 3:* _Spring Data JPA_
-2:30 PM - 3:30 PM:: *Session 4:* _Splitting the Monolith_
+1:30 PM - 2:30 PM:: *Session 3:* _Spring Data REST and Spring Cloud Connector_
+2:30 PM - 3:30 PM:: *Session 4:* _From a Monolith to microservices_
 3:30 PM - 3:45 PM:: Afternoon Break
 3:45 PM - 5:00 PM:: *Session 5:* _Microservices with Polyglot Persistence_
 
 ==== Day Two
-9:00 AM - 10:30 AM:: *Session 6:* _Cloud-Native Architecture Patterns: Part One_
+9:00 AM - 10:30 AM:: *Session 6:* _Spring Cloud: Part 1 (Config Server and Eureka)_
 10:30 AM - 10:45 AM:: Morning Break
-10:45 AM - 12:30 AM:: *Session 7:* _Cloud-Native Architecture Patterns: Part Two_
+10:45 AM - 12:30 AM:: *Session 7:* _Spring Cloud: Part 2 (Ribbon and Hystrix)_
 12:30 PM - 1:30 PM:: Lunch
 1:30 PM - 3:00 PM:: *Session 8:* _Securing Cloud-Native Applications_
 3:00 PM - 3:15 PM:: Afternoon Break
@@ -75,42 +52,42 @@ We accept that this is not typical but it makes the lab instructions simpler.
 
 ==== Day One
 
-* Session 1 (link:sessions/day_01/session_01/session_01.pdf[Slides])
+* Session 1
 ** link:sessions/day_01/session_01/lab_01a/lab_01a_boot_getting_started.adoc[Lab 01a - Getting Started with Spring Boot]
 ** link:sessions/day_01/session_01/lab_01b/lab_01b_boot_with_jetty.adoc[Lab 01b - Deploying a Web Application with an Embedded Container]
 ** link:sessions/day_01/session_01/lab_01c/lab_01c_boot_properties.adoc[Lab 01c - Externalizing Configuration with Spring Boot]
 ** link:sessions/day_01/session_01/lab_01d/lab_01d_boot_actuator.adoc[Lab 01d - Introspection, Monitoring, and Metrics using Spring Boot Actuator]
-* Session 2 (link:sessions/day_01/session_02/session_02.pdf[Slides])
+* Session 2
 ** link:sessions/day_01/session_02/lab_02a/lab_02a_cf_push.adoc[Lab 02a - From Zero to Pushing Your First Application]
 ** link:sessions/day_01/session_02/lab_02b/lab_02b_cf_service.adoc[Lab 02b - Binding to Cloud Foundry Services]
 ** link:sessions/day_01/session_02/lab_02c/lab_02c_cf_scaling.adoc[Lab 02c - Scaling Applications]
 ** link:sessions/day_01/session_02/lab_02d/lab_02d_cf_monitoring.adoc[Lab 02d - Monitoring Applications]
-* Session 3 (link:sessions/day_01/session_03/session_03.pdf[Slides])
+* Session 3
 ** link:sessions/day_01/session_03/lab_03a/lab_03a_rest.adoc[Lab 03a - Build a Hypermedia-Driven RESTful Web Service with Spring Data REST]
 ** link:sessions/day_01/session_03/lab_03b/lab_03b_service_binding.adoc[Lab 03b - Leveraging Spring Cloud Connectors for Service Binding]
-* Session 4 (link:sessions/day_01/session_04/session_04.pdf[Slides])
+* Session 4
 ** link:sessions/day_01/session_04/lab_04a/lab_04a_bounded_contexts.adoc[Lab 04a - Decomposition into microservices]
-* Session 5 (link:sessions/day_01/session_05/session_05.pdf[Slides])
+* Session 5
 ** link:sessions/day_01/session_05/lab_05a/lab_05a_quotes.adoc[Lab 05a - Build Quotes Service with MongoDB]
 ** link:sessions/day_01/session_05/lab_05b/lab_05b_accounts.adoc[Lab 05b - Build Account Service using MySQL]
 ** link:sessions/day_01/session_05/lab_05c/lab_05c_portfolio.adoc[Lab 05c - Build Portfolio Service with MySQL]
 
 ==== Day Two
 
-* Session 6 (link:sessions/day_02/session_06/session_06.pdf[Slides])
+* Session 6
 ** link:sessions/day_02/session_06/lab_06a/lab_06a_config_server.adoc[Lab 06a - Deploying and Using Spring Cloud Config Server]
 ** link:sessions/day_02/session_06/lab_06b/lab_06b_discovery.adoc[Lab 06b - Leveraging Eureka for Service Discovery via Spring Cloud Netflix]
 
-* Session 7 (link:sessions/day_02/session_07/session_07.pdf[Slides])
+* Session 7
 ** link:sessions/day_02/session_07/lab_07a/lab_07a_load_balancing.adoc[Lab 07a - Client-Side Load Balancing with Ribbon]
 ** link:sessions/day_02/session_07/lab_07b/lab_07b_feign.adoc[Lab 07b - Declarative REST Clients with Feign]
 ** link:sessions/day_02/session_07/lab_07c/lab_07c_fault_tolerance.adoc[Lab 07c - Fault-Tolerance with Hystrix]
 ** link:sessions/day_02/session_07/lab_07d/lab_07d_hystrix_dashboard.adoc[Lab 07d - Monitoring Circuit Breakers with Hystrix Dashboard]
 
-* Session 8 (link:sessions/day_02/session_08/session_08.pdf[Slides])
+* Session 8
 ** link:sessions/day_02/session_08/lab_08a/lab_08a_oauth2_server.adoc[Lab 08a - Creating an OAuth2 Authorization Server]
 ** link:sessions/day_02/session_08/lab_08b/lab_08b_secure.adoc[Lab 08b - Securing a Resource Server with Spring Cloud Security]
 
 
-* Session 9 (link:sessions/day_02/session_09/session_09.pdf[Slides])
+* Session 9
 ** link:sessions/day_02/session_09/lab_09a/lab_09a_deploy_microservices_app.adoc[Lab 09a - Deploy Spring Trader Microservices App]

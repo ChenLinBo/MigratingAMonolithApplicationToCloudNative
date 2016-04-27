@@ -29,13 +29,16 @@ As for `spring-trader-quotes`, You can see that static web files are not include
 
 
 
-. Add the following to `application.properties` -- we'll eventually want to run multiple apps locally, so we are using a port that is different from 8080:
+. Add the following to `application.yml` -- we'll eventually want to run multiple apps locally, so we are using a port that is different from 8080:
 +
 ----
-server.port=8082
-security.basic.enabled=false
-spring.jpa.database-platform = org.hibernate.dialect.MySQL5Dialect
-spring.jpa.hibernate.ddl-auto=create
+server.port: 8082
+
+security.basic.enabled: false
+spring.jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate.ddl-auto: create
+    
 ----
 
 . To run the application locally you have to add H2 dependency to your `pom.xml` file.
@@ -49,9 +52,9 @@ spring.jpa.hibernate.ddl-auto=create
  </dependency>
 ----
 
-. Open `src/main/resources/import.sql`. As a naming convention, Spring Boot automatically loads this file at startup time. You will therefore have 2 accounts created by default at application startup time.
+. Open `src/main/resources/import.sql`. As seen previously, Spring Boot automatically loads this file at startup time (based on a naming convention). You will therefore have 2 accounts created by default at application startup time.
 
-. Run the application and open the url http://localhost:8082/account/1 into your web browser. You should see the following:
+. Run the application by launching `AccountsApplication` and open the url http://localhost:8082/account/1 into your web browser. You should see the following:
 +
 [source,json]
 ----

@@ -1,4 +1,3 @@
----
 timeout: 180
 instances: 1
 memory: 512M
@@ -8,6 +7,5 @@ env:
 applications:
 - name: quotes
   random-route: true
-  path: target/lab_05a-quotes-solution-1.0.0-SNAPSHOT.jar
+  path: target/lab_05a-quotes-1.0.0-SNAPSHOT.jar
   services: [ springtrader-quotes-db ]
-

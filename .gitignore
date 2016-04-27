@@ -13,3 +13,5 @@ workspace/
 .idea
 
 notes.pdf
+
+*.odp#

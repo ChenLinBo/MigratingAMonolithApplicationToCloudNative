@@ -2,17 +2,16 @@
 
 Estimated time to complete: 20 minutes
 
-== Generate a project from http://start.spring.io
+== Generate a project from start.spring.io
 
-. In your browser, visit http://start.spring.io.
+. In your browser, visit https://start.spring.io.
 
 . Fill out the *Project metadata* fields as follows:
 +
 Group:: `io.spring.pivotal`
 Artifact:: `hello-spring-boot`
-Package Name:: `io.pivotal.spring`
 Search For Dependencies:: `Web`
-
+Spring Boot version:: `1.3.3`
 
 . Click the *Generate Project* button. Your browser will download a zip file.
 Unpack that zip file at `$COURSE_HOME/day_01/session_01/lab_01a/initial`.

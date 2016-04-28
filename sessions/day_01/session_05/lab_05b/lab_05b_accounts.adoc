@@ -93,7 +93,7 @@ $ mvn clean package
 
 == Deploying to Cloud Foundry
 
-. Create an application manifest in `manifest.yml`:
+. Paste the following inside `manifest.yml`:
 +
 [source,yml]
 ----

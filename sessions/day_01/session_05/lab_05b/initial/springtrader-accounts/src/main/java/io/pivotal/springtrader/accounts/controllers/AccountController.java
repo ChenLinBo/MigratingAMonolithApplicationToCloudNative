@@ -34,12 +34,12 @@ public class AccountController {
         return new ResponseEntity<>(accountResponse,getNoCacheHeaders(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/account/", method = RequestMethod.GET)
-    public ResponseEntity<Account> findAccount(@RequestParam(value="name") final String id) {
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public ResponseEntity<Account> findAccountByUserId(@RequestParam(value="userid") final String userId) {
 
-        logger.info("AccountController.getAccount: id=" + id);
+        logger.info("AccountController.getAccountByUserId: userId=" + userId);
 
-        Account accountResponse = accountService.getAccount(id);
+        Account accountResponse = accountService.getAccountByUserId(userId);
         return new ResponseEntity<>(accountResponse,getNoCacheHeaders(), HttpStatus.OK);
 
     }
@@ -64,7 +64,7 @@ public class AccountController {
 
         if (amount > 0.0) {
 
-            double currentBalance = accountService.getAccount(userId).getBalance().doubleValue();
+            double currentBalance = accountService.getAccountByUserId(userId).getBalance().doubleValue();
             double newBalance = accountService.decreaseBalance(amount,userId);
 
             if(currentBalance != newBalance) return new ResponseEntity<>(newBalance,getNoCacheHeaders(), HttpStatus.OK);
@@ -92,7 +92,7 @@ public class AccountController {
         } else {
 
             //amount can not be negative for increaseBalance, please use decreaseBalance
-            return new ResponseEntity<>(accountService.getAccount(userId).getBalance().doubleValue(), getNoCacheHeaders(),
+            return new ResponseEntity<>(accountService.getAccountByUserId(userId).getBalance().doubleValue(), getNoCacheHeaders(),
                     HttpStatus.EXPECTATION_FAILED);
         }
 

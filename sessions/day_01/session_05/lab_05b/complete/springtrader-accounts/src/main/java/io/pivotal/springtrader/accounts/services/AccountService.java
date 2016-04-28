@@ -40,17 +40,17 @@ public class AccountService {
         return account;
     }
 
-    public Account getAccount(String id) {
+    public Account getAccountByUserId(String userId) {
 
-        logger.debug("AccountService.getAccount: id=" + id);
+        logger.debug("AccountService.getAccount: id=" + userId);
 
-        Account account = accountRepository.findByUserid(id);
+        Account account = accountRepository.findByUserid(userId);
         if (account == null) {
-            logger.warn("AccountService.getAccount: could not find account with id: " + id);
+            logger.warn("AccountService.getAccount: could not find account with id: " + userId);
             throw new NoRecordsFoundException();
         }
 
-        logger.info(String.format("AccountService.getAccount - retrieved account with id: %s. Payload is: %s", id, account));
+        logger.info(String.format("AccountService.getAccount - retrieved account with id: %s. Payload is: %s", userId, account));
 
         return account;
     }

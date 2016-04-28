@@ -4,12 +4,12 @@ Estimated time to complete: 30 minutes
 [abstract]
 --
 Now we'll begin using the components found in Spring Cloud to implement patterns for distributed systems.
-We'll being using Spring Cloud Config to centralize configuration for applications.
+We'll be using Spring Cloud Config to centralize configuration for applications.
 Our configuration will be stored in a GitHub repository, and served to our applications using the Spring Cloud Config Server.
 
 In this lab, we'll do the following:
 
-. Create a GitHub repository to store our configuration
+. Create a GitHub repository to store your configuration
 . Create a Spring Cloud Config Server and test it with a basic sample application
 --
 
@@ -69,7 +69,7 @@ image::../../../Common/images/github_1.png[]
 +
 image::../../../Common/images/github_2.png[]
 
-. Paste the commands from ``...push an existing repository...'' to the command prompt and execute them:
+. You can follow the instructions on the github page as shown below:
 +
 image::../../../Common/images/github_3.png[]
 +
@@ -85,7 +85,7 @@ To git@github.com:caxqueiroz/springtrader-config-repo.git
    3ffd637..6fae273  master -> master
 ----
 
-. Refresh the browser to see your pushed changes:
+. Refresh the browser to confirm that you have pushed your changes:
 +
 image::../../../Common/images/github_4.png[]
 
